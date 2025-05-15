@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Gửi em yêu 💌</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #e0f7fa;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #e75480;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #80cbc4;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff85c1;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 1.2rem;
+      color: #8b008b;
+      display: none;
+      word-break: break-word;
+    }
+
+    .heart {
+      position: absolute;
+      color: #d482ab;
+      animation: fall 5s linear infinite;
+      font-size: 20px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive cho điện thoại */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      button {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+      }
+
+      #message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button onclick="showMessage()">Bấm vào đây nè!</button>
+  <p id="message">Anh chỉ muốn hỏi là... em ăn cơm chưa 🍚💬</p>
+
+  <script>
+    function showMessage() {
+      document.getElementById("message").style.display = "block";
+    }
+
+    // Tạo biểu tượng rơi (thay thế trái tim)
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '🍀'; // Có thể đổi: 🎈 ✨ 🌸 🍀
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }, 300);
+  </script>
+</body>
+</html>
